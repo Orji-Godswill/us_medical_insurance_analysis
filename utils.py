@@ -52,8 +52,10 @@ class SummaryStatistics:
             col_median = num_median / 2
         return col_median
 
-    def mode(self, lst):
-        pass
+    def proportion(self, lst):
+        total = 0
+        for i in lst:
+            total += float(i)
 
     def std(self, lst):
         sum__square_total = 0
@@ -80,8 +82,30 @@ class PatientsByRegion:
     def region(self, lst):
         region_dict = dict()
         for region in lst:
-            if region in region_dict.values():
+            if region in region_dict.keys():
                 region_dict[region] += 1
             else:
                 region_dict[region] = 1
         return region_dict
+
+    def analyse_region(self, lst):
+        my_dict = self.region(lst)
+
+        for key, value in my_dict.items():
+            print(
+                "The total number of patients from {0} is {1}".format(key, value))
+
+
+class PatientThatSmoke:
+    def ___init__(self):
+        return None
+
+    def charge(self, lst_status, lst_charges):
+        total_smokers = 0
+        total_non_smokers = 0
+        for i in range(len(lst_status)):
+            if lst_status[i] == 'yes':
+                total_smokers += float(lst_charges[i])
+            elif lst_status[i] == 'no':
+                total_non_smokers += float(lst_charges[i])
+        return total_smokers, total_non_smokers
